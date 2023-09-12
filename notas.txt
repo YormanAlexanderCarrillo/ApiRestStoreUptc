@@ -1,0 +1,23 @@
+Estructura Agregar producto a la Api
+{
+  "id":12,
+  "name":"Esfero",
+  "description": "Esfero marca BIG",
+  "price": 1000.99,
+  "image": "Https://imagenEsfero.png",
+  "stock": 10,
+  "availability":true
+}
+
+Estructura agregar usuario 
+
+{
+  "id":1064578543,
+  "name":"Julian ",
+  "lastname": "Perez",
+  "email": "J.Perez@gmail.com",
+  "password": "contraseña1",
+  "phone": 3132342342
+}
+
+
