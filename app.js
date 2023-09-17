@@ -10,7 +10,8 @@ app.listen(app.get('PORT'), ()=>{
 })
 
 require('./drivers/connect_db')
-app.use('/product', require('./routes/product'))
-app.use('/user', require('./routes/user'))
-app.use('/category', require('./routes/category'))
-app.use('/order', require('./routes/order'))
+app.use('/products', require('./routes/product'))
+app.use('/users', require('./routes/user'))
+app.use('/categories', require('./routes/category'))
+app.use('/orders', require('./routes/order'))
+app.use('/productCart', require('./routes/productCart'))

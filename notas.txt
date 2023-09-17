@@ -20,4 +20,16 @@ Estructura agregar usuario
   "phone": 3132342342
 }
 
+// login
+{
+  "email": "M.fuentes23@gmail.com ",
+  "password": "contraseña3"
+}
+
+// crear categoria sin productos
+{
+  "name": "  CAMISETAS ",
+  "description": "descripcion de la categoria de camisetas"
+}
+
 

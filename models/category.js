@@ -5,7 +5,8 @@ const categorySchema = new Schema({
     name:{
         type: String,
         unique:true,
-        required: true
+        required: true,
+        trim: true // Elimina espacios en blanco al inicio y al final
     },
     description:{
         type: String,
@@ -13,6 +14,7 @@ const categorySchema = new Schema({
     },
     products:[
         {
+            required:false,
             type: mongoose.Schema.Types.ObjectId,
             ref: 'product'
         }
