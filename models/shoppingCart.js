@@ -6,7 +6,7 @@ const shoppingCartSchema = new Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: 'user'
     },
-    productCart: [
+    productsCart: [
         {
             type: mongoose.Schema.Types.ObjectId,
             ref: 'productCart'
@@ -16,6 +16,7 @@ const shoppingCartSchema = new Schema({
         type: Number,
         required: true
     }
-})
+}
+)
 
 module.exports = mongoose.model('shoppingCart', shoppingCartSchema)

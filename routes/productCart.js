@@ -2,8 +2,8 @@ const express = require('express')
 const router = express.Router()
 const {addProductToCart,getCartProducts, deleteProductFromCart} = require('../controllers/controll_productCart')
 
-router.get('/:id', getCartProducts)
-router.post('/:id', addProductToCart)
-router.delete('/:id', deleteProductFromCart)
+router.get('/:idUser', getCartProducts)
+router.post('/:idUser', addProductToCart)
+router.delete('/:idProduct', deleteProductFromCart)
 
 module.exports = router

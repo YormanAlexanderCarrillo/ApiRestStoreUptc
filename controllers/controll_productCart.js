@@ -4,7 +4,7 @@ module.exports = {
     addProductToCart: async (req, res) => {
         try {
             const { productId, quantity, unitPrice } = req.body
-            const userId = req.params.id
+            const userId = req.params.idUser
             //console.log(productId, quantity, unitPrice, userId);
             let productInCart = await productCart.findOne({ user: userId, products: productId })
             if (productInCart) {
@@ -33,7 +33,7 @@ module.exports = {
         }
     }, getCartProducts: async (req, res) => {
         try {
-            const userId = req.params.id
+            const userId = req.params.idUser
             const cartProducts = await productCart.find({ user: userId }).populate('products')
             return res.status(200).json({
                 "status": true,
@@ -48,7 +48,7 @@ module.exports = {
     }, 
     deleteProductFromCart: async(req, res)=>{
         try {
-            const idProductCart = req.params.id
+            const idProductCart = req.params.idProduct
             //console.log(idProductCart);
             const productDeleted = await productCart.findByIdAndDelete(idProductCart)
             //console.log(productDeleted);
