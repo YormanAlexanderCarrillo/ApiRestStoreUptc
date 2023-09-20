@@ -1,5 +1,7 @@
 const user = require('../models/user')
 const bcrypt = require('bcrypt')
+const nodemailer = require('nodemailer');
+
 
 module.exports = {
     saveUser:async (req, res)=>{
@@ -111,5 +113,60 @@ module.exports = {
                 "error": error
             });
         }
+    },
+    sendMailRecoveryPass : async(req, res)=>{
+        const {email} = req.params
+        console.log(email);
+        const User = await user.findOne({ email: email });
+        if (User) {
+            const transporter = nodemailer.createTransport({
+                service: 'Gmail',
+                auth: {
+                  user: 'remainsystem32@gmail.com',
+                  pass: 'ohgw qzed pyzt bppq'
+                }
+            });
+    
+            const mailOptions = {
+                from: 'remainsystem32@gmail.com',
+                to: email,
+                subject: 'Recuperacion de clave',
+                text: 'Aqui va el link '
+            };
+    
+            transporter.sendMail(mailOptions, (error, info) => {
+                if (error) {
+                  console.error('Error al enviar el correo electrónico:', error);
+                  return res.status(200).json({"state": false, "message": error})
+                } else {
+                  console.log('Correo electrónico enviado con éxito:', info.response);
+                  return res.status(200).json({"state": true, "message": "funciono "})
+                }
+            });
+        }else{
+            return res.status(404).json({"state": true, "message": "Registrese sapo perro"})
+        }
+    },
+    updatePassword: async (req, res) => {
+        const { emailSearch, newPassword } = req.body;
+        const salt = await bcrypt.genSalt(10);
+        const newHashedPassword = await bcrypt.hash(newPassword, salt);
+    
+        try {
+            const updateUser = await user.findOneAndUpdate(
+                { email: emailSearch },
+                { password: newHashedPassword },
+                { new: true }
+            );
+    
+            if (updateUser) {
+                return res.status(200).json({ state: true, updateUser });
+            } else {
+                return res.status(500).json({ state: false, message: "Usuario no encontrado" });
+            }
+        } catch (error) {
+            return res.status(500).json({ state: false, message: error.message });
+        }
     }
-}
+    
+} 
