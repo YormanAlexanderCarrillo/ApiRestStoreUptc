@@ -1,6 +1,6 @@
 # Proyecto
 
 
-## La ruta de la base de datos en local
+## La ruta de la base de datos es local
 
 

@@ -5,22 +5,31 @@ module.exports = {
     saveUser:async (req, res)=>{
         try{
             const {id, name, lastname, email, password, phone, role} = req.body
-            const salt = await bcrypt.genSalt(10)
-            const hashedPassword = await bcrypt.hash(password, salt)
-            const newUser= new user({
-                id, 
-                name,
-                lastname,
-                email, 
-                password: hashedPassword,
-                phone,
-                role
-            })
-            const dataUserSave = await newUser.save()
-            return res.status(200).json({
-                "status": true,
-                "dataUserSave": dataUserSave
-            })
+            const User = await user.findOne({ email: email });
+            if (!User) {
+                
+                const salt = await bcrypt.genSalt(10)
+                const hashedPassword = await bcrypt.hash(password, salt)
+                const newUser= new user({
+                    id, 
+                    name,
+                    lastname,
+                    email, 
+                    password: hashedPassword,
+                    phone,
+                    role
+                })
+                const dataUserSave = await newUser.save()
+                return res.status(200).json({
+                    "status": true,
+                    "dataUserSave": dataUserSave
+                })
+            }else{
+                return res.status(200).json({
+                    "status": false,
+                    "message": "Correo ya registrado"
+                })
+            }
         }catch(error){
             return res.status(500).json({
                 "status": false,
