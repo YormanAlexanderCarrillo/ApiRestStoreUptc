@@ -2,7 +2,6 @@ const user = require('../models/user')
 const bcrypt = require('bcrypt')
 const nodemailer = require('nodemailer');
 
-
 module.exports = {
     saveUser: async (req, res) => {
         try {
@@ -87,7 +86,7 @@ module.exports = {
     loginUser: async (req, res) => {
         try {
             const { email, password } = req.body;
-            // console.log(email, password);
+          //  console.log(email, password);
             const User = await user.findOne({ email: email });
             // console.log(User);
             if (!User) {
@@ -147,7 +146,7 @@ module.exports = {
             });
         } else {
             return res.status(404).json({ 
-                "state": true, 
+                "state": false, 
                 "message": "No se encontro el correo." 
             })
         }
@@ -178,5 +177,4 @@ module.exports = {
             });
         }
     }
-
 } 

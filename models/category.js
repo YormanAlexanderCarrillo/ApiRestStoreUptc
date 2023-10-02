@@ -12,6 +12,10 @@ const categorySchema = new Schema({
         type: String,
         required: false,
     },
+    classification:{
+        type: String,
+        required: true,
+    },
     products:[
         {
             required:false,

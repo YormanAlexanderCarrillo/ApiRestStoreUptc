@@ -16,12 +16,14 @@ module.exports = {
         }
     }, createCategory: async (req, res) => {
         try {
-            const { name, description } = req.body
+            const { name, description, classification } = req.body
+            console.log(name, description ,classification )
             const Name = name.toLowerCase()
             const categoryJson = {
                 "name": Name,
                 "description": description,
-                "products": []
+                "products": [],
+                "classification":classification
             }
             const categoryExist = await category.findOne({ "name": Name })
             // console.log(categoryExist);
@@ -42,7 +44,7 @@ module.exports = {
         } catch (error) {
             return res.status(500).json({
                 "status": false,
-                "error": error
+                "error": error.message
             })
         }
     }, findCategoryById: async (req, res) => {
@@ -63,6 +65,7 @@ module.exports = {
         try {
             const idCategory = req.params.id
             const {idProduct} = req.body
+            console.log(idCategory, idProduct);
             const Category = await category.findById(idCategory)
             if (!Category){
                 return res.status(500).json({
@@ -85,7 +88,7 @@ module.exports = {
     }, deleteCategory: async (req, res)=>{
         try {
             const idCategory = req.params.id
-            console.log(idCategory);
+            //console.log(idCategory);
             const categoryDelete = await category.findByIdAndDelete(idCategory)
             return res.status(200).json({
                 "status": true,
