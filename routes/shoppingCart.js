@@ -12,7 +12,7 @@ const {createShoppingCart, addProductCartToShoppingCart, getShoppingCart}= requi
 
 /**
  * @swagger
- * /shopping-cart/{userId}:
+ * /shoppingCart/{userId}:
  *   post:
  *     tags:
  *       - Carrito de Compras
@@ -40,7 +40,7 @@ router.post('/:userId', createShoppingCart)
 
 /**
  * @swagger
- * /shopping-cart:
+ * /shoppingCart:
  *   post:
  *     tags:
  *       - Carrito de Compras
@@ -77,7 +77,7 @@ router.post('/', addProductCartToShoppingCart )
 
 /**
  * @swagger
- * /shopping-cart/{userId}:
+ * /shoppingCart/{userId}:
  *   get:
  *     tags:
  *       - Carrito de Compras
