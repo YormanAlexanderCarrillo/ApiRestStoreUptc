@@ -13,6 +13,8 @@ Este es el archivo README del proyecto **apitiendauptc**, que es una API para un
 
 ## Instalación
 
+En el archivo .env se debe colocar la url de la base de datos de mongoAtlas.
+
 Para instalar las dependencias del proyecto, ejecute el siguiente comando:
 
 ```bash
