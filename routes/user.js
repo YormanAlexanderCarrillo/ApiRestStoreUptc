@@ -192,7 +192,6 @@ router.post('/login', loginUser)
  */
 router.post('/updatePassword', updatePassword) 
 
-
 /**
  * @swagger
  * /users/sendEmail/{email}:
